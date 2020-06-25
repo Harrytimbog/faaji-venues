@@ -30,7 +30,7 @@ class VenuesController < ApplicationController
       redirect_to venue_path(@venue), notice: 'Venue was successfully updated.'
     else
       render :edit
-
+    end
   end
 
   def destroy
