@@ -1,2 +1,14 @@
-<h1>Venues#new</h1>
-<p>Find me in app/views/venues/new.html.erb</p>
+<%= render 'sidenav' %>
+
+<div class="main pt-3">
+
+  <div class="host-banner">
+    <%= image_tag "banner.jpg", crop: "fill", height: 250 %>
+  </div>
+
+  <h1 class="pt-3">rent your vvvenue</h1>
+  <h5 class="pb-4">make money hosting your venue for events</h5>
+  <%= render 'form'%>
+  <%# link_to 'Back', my_own_path, class: "btn btn-primary mt-3" %>
+</div>
+

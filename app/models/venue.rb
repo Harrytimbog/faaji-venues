@@ -1,4 +1,6 @@
 class Venue < ApplicationRecord
+  has_one_attached :image
+
   validates :description, length: { minimum: 5 }
   validates :price, presence: true, allow_nil: false
 

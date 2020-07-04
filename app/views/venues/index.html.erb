@@ -1,3 +1,40 @@
 <% content_for(:sidebar) do %>
     <%= render :partial => "layouts/sidebar" %>
 <% end %>
+
+<div class="main">
+  <% if params[:search][:query] == "" %>
+  <h1><%= "all results" %></h1>
+  <p>here are all available vvvenues for your search</p>
+  <% else %>
+  <h1><%= params[:search][:query].downcase %></h1>
+  <p>here are all the vvvenues for "<%= params[:search][:query].downcase %>"</p>
+  <% end %>
+  <div class="container cards-grid">
+    <% @venues.each do |venue| %>
+      <div class="card p-3 linkable">
+        <div>
+          <% if venue.imgurl %>
+          <%= cl_image_tag(venue.imgurl, class: 'img-fluid', cloud_name: 'danielcastro', crop: "fill", width: 400, height: 200) %>
+          <% else %>
+          <%= image_tag "padeacucar-img.png", crop: "fill" %>
+          <% end %>
+          <h5 class="px-3 py-2 black_tag"></h5>
+          <div class="d-flex">
+            <div class="col pl-3">
+              <h5 class="h5-venue-title"><%= venue.title %></h5>
+            </div>
+            <div class="col" style="text-align: right;">
+              <p class="black_tag"><%= venue.price %>€/day</p>
+            </div>
+          </div>
+        </div>
+        <%= link_to '', venue_path(venue), class: "card-link" %>
+        <%= link_to "+", venue_path(venue), method: :delete, data: { confirm: "You are about to delete this Venue. Are you sure?" }, class: "card-remove-link", id: "sweet-alert-destroy" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="mt-5">
+    <%= link_to 'go back to search', root_path, class: 'btn btn-secondary'  %>
+  </div>
+</div>

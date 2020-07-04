@@ -1,0 +1,22 @@
+<%= simple_form_for(@venue) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+  <div class="form-inputs">
+    <%= f.input :image, as: :file %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :title, placeholder: "Small summary of your venue" %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :price, placeholder: "Price in euros - €", label: "Price per day (€)" %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :description, placeholder: "Describe your awesome venue" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
